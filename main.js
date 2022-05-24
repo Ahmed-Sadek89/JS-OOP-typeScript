@@ -1,7 +1,10 @@
-function User(name, age){
-    this.name = name;
-    this.age = age
-} 
+class User {
+    constructor (name, age){
+        this.n = name;
+        this.age = age
+    }
+}
+
 
 const user1 = new User('ahmed', 25)
 console.log({...user1});
