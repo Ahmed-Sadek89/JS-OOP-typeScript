@@ -7,6 +7,11 @@ class User {
     sayHello(){
         return `hello ${this.n}, your age is ${this.age}`
     }
+    updateUser(name, age){
+        this.n = name;
+        this.age = age;
+        this.isMarried = this.age > 18 ? true : false;
+    }
 }
 
 
@@ -14,6 +19,8 @@ const user1 = new User('ahmed', 25)
 console.log({...user1});  //{name: ahmed, age: 25, isMarried: true}
 console.log(user1.sayHello); // return native function
 console.log(user1.sayHello()); 
+console.log(user1.updateUser('aya', 16)); 
+console.log({...user1});  //{name: aya, age: 16, isMarried: false}
 
 const user2 = new User('amr', 24)
 console.log({...user2});  //{name: ahmed, age: 25, isMarried: true}
