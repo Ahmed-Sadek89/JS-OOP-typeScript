@@ -1,33 +1,24 @@
-class User {
-    constructor (name, age){
-        this.n = name;
+class User { 
+    // set private props
+    #salary
+    constructor (name, age, salary) {
+        this.name = name;
         this.age = age;
+        this.#salary = salary;
     }
-    sayHello(){
-        return `hello ${this.n}, your age is ${this.age}`
+    // set private method
+    #getSalary(){
+        return parseInt(this.#salary) // call private props in class
+    }
+    getAllInfo() {
+        return {
+            name: this.name,
+            age: this.age,
+            salary: this.#getSalary() // call private method in class
+        }
     }
 }
 
-class Admin extends User{
-    constructor (name, age, permissions) {
-        super(name, age);
-        this.p = permissions;
-    }
-    getPermissions() {
-        return this.p
-    }
-}
-
-
-const user1 = new User('ahmed', 20)
-console.log({...user1});  //{name: ahmed, age: 25, isMarried: true}
-console.log(user1.sayHello()); 
-
-console.log("###########");
-
-const admin1 = new Admin('amr', 30, 'frontEnd');
-// here, I have all authority to access all properties and methods in Admin & User 
-console.log({...admin1});
-console.log(admin1.n);
-console.log(admin1.sayHello());
-console.log(admin1.getPermissions());
+const user1 = new User('amr', 22, '123 $');
+console.log({...user1}); //{amr 22}
+console.log(user1.getAllInfo()); //{amr 22 123}
